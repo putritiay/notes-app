@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-dev": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -17,10 +18,14 @@
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.4",
     "html-webpack-plugin": "^5.6.6",
+    "prettier": "^3.8.1",
     "style-loader": "^4.0.0",
     "webpack": "^5.105.2",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.3",
     "webpack-merge": "^6.0.1"
+  },
+  "dependencies": {
+    "sweetalert2": "^11.26.20"
   }
 }

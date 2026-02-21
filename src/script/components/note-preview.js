@@ -1,28 +1,28 @@
 class NotePreview extends HTMLElement {
-    static get observedAttributes() {
-        return ["title", "body"];
-    }
+  static get observedAttributes() {
+    return ["title", "body"];
+  }
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this._title = "";
-        this._body = "";
+    this._title = "";
+    this._body = "";
 
-        this._style = document.createElement("style");
-    }
+    this._style = document.createElement("style");
+  }
 
-    attributeChangedCallback(name, oldValue, newValue) {
-        this[`_${name}`] = newValue;
-        this.render();
-    }
+  attributeChangedCallback(name, oldValue, newValue) {
+    this[`_${name}`] = newValue;
+    this.render();
+  }
 
-    connectedCallback() {
-        this.render();
-    }
+  connectedCallback() {
+    this.render();
+  }
 
-    updateStyle() {
-        this._style.textContent = `
+  updateStyle() {
+    this._style.textContent = `
       :host {
         display: block;
       }
@@ -32,15 +32,15 @@ class NotePreview extends HTMLElement {
         background: linear-gradient(to bottom right, #f5f3ff, #ede9fe);
       }
     `;
-    }
+  }
 
-    render() {
-        this.updateStyle();
+  render() {
+    this.updateStyle();
 
-        const title = this._title || "Preview Title";
-        const body = this._body || "Preview content will appear here...";
+    const title = this._title || "Preview Title";
+    const body = this._body || "Preview content will appear here...";
 
-        this.innerHTML = `
+    this.innerHTML = `
       ${this._style.outerHTML}
       <article class="note-card preview">
         <div class="note-card__content">
@@ -52,7 +52,7 @@ class NotePreview extends HTMLElement {
         </div>
       </article>
     `;
-    }
+  }
 }
 
 customElements.define("note-preview", NotePreview);

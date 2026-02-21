@@ -17,6 +17,7 @@ class NoteItem extends HTMLElement {
     this._note["title"] = value.title;
     this._note["body"] = value.body;
     this._note["createdAt"] = value.createdAt;
+    this._note["archived"] = value.archived;
 
     // Render ulang setelah `note` di-update
     this.render();
@@ -39,6 +40,8 @@ class NoteItem extends HTMLElement {
 
     this.setAttribute("data-id", this._note.id);
 
+    const isArchived = this._note.archived;
+
     this.innerHTML = `
       ${this._style.outerHTML}
 
@@ -51,10 +54,10 @@ class NoteItem extends HTMLElement {
           <div class="note-card__footer">
             <time datetime="${this._note.createdAt}">
               ${new Date(this._note.createdAt).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })}
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
             </time>
             <div class="note-card__actions">
               <button class="btn-icon btn-delete" title="Delete">
@@ -72,10 +75,10 @@ class NoteItem extends HTMLElement {
                   />
                 </svg>
               </button>
-              <button class="btn-icon btn-archive" title="Archive">
+              <button class="btn-icon btn-archive" title="${isArchived ? "Unarchive" : "Archive"}">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
+                    fill="${isArchived ? "currentColor" : "none"}"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                 >
@@ -97,12 +100,25 @@ class NoteItem extends HTMLElement {
     const deleteButton = this.querySelector(".btn-delete");
     if (deleteButton) {
       deleteButton.addEventListener("click", () => {
-        // Dispatch custom event with note ID
         this.dispatchEvent(
           new CustomEvent("delete-note", {
             detail: { id: this._note.id },
             bubbles: true,
-          })
+          }),
+        );
+      });
+    }
+
+    // Add event listener for archive button
+    const archiveButton = this.querySelector(".btn-archive");
+    if (archiveButton) {
+      archiveButton.addEventListener("click", () => {
+        const eventName = isArchived ? "unarchive-note" : "archive-note";
+        this.dispatchEvent(
+          new CustomEvent(eventName, {
+            detail: { id: this._note.id },
+            bubbles: true,
+          }),
         );
       });
     }

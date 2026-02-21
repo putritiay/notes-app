@@ -57,7 +57,32 @@ class AppHeader extends HTMLElement {
     this.updateStyle();
 
     this.innerHTML = `
-      ${this._style.outerHTML}
+      <style>
+        ${this._style.textContent}
+        .header-nav {
+          margin-top: 1rem;
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+        }
+        .nav-link {
+          text-decoration: none;
+          color: #475569;
+          font-weight: 600;
+          padding: 0.5rem 1rem;
+          border-radius: var(--radius-md, 0.5rem);
+          transition: all 0.2s;
+          cursor: pointer;
+        }
+        .nav-link:hover {
+          background-color: #e2e8f0;
+          color: #4f46e5;
+        }
+        .nav-link.active {
+          background-color: #4f46e5;
+          color: white;
+        }
+      </style>
       <header class="app-header">
         <h1>Notes App</h1>
         <p>Organize your Thoughts Beautifully</p>

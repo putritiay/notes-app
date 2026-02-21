@@ -91,7 +91,7 @@ class NoteForm extends HTMLElement {
     this.innerHTML = `
       <style>
         #title {
-          text-transform: capitalize;
+          text-transform: normal;
         }
       </style>
       <div class="form-card">
@@ -99,13 +99,13 @@ class NoteForm extends HTMLElement {
         <form id="notes-form" autocomplete="off">
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" placeholder="Enter note title..."
+            <input type="text" name="title" id="title" placeholder="What's on your mind?"
               aria-describedby="titleValidation" required />
             <p id="titleValidation" class="validation-message" aria-live="polite"></p>
           </div>
           <div class="form-group">
             <label for="content">Content</label>
-            <textarea name="content" id="content" placeholder="Write your note here..." rows="4"
+            <textarea name="content" id="content" placeholder="Capture your thoughts here..." rows="4"
               aria-describedby="contentValidation" required></textarea>
             <p id="contentValidation" class="validation-message" aria-live="polite"></p>
           </div>

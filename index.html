@@ -1,38 +1,48 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Notes App</title>
 
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes App</title>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="notes-app.png" type="image/x-icon" />
-  </head>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
-  <body>
-    <div class="app-container">
-      <!-- App Header -->
-      <app-header></app-header>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="notes-app.png" type="image/x-icon" />
+</head>
 
-      <!-- Note Form Component -->
-      <section class="form-section">
-        <note-form id="note-form"></note-form>
-      </section>
+<body>
+  <div class="app-container">
+    <!-- App Header -->
+    <app-header></app-header>
 
-      <!-- Notes Section -->
-      <section id="notes-container">
-        <note-list></note-list>
-      </section>
+    <!-- Note Form Component -->
+    <section class="form-section">
+      <note-form id="note-form"></note-form>
+    </section>
 
-      <footer>Notes App &copy; 2026</footer>
-    </div>
-  </body>
+    <!-- Notes Section -->
+    <section id="notes-container">
+      <div class="notes-header">
+        <h2 class="section-title">My Notes</h2>
+        <nav class="notes-nav">
+          <button class="nav-link active" id="btn-active">Active</button>
+          <button class="nav-link" id="btn-archived">Archived</button>
+        </nav>
+      </div>
+      <note-list></note-list>
+    </section>
+
+    <footer>
+      <p>Built for the future of note-taking</p>
+      <p>&copy; 2026 Notes App &bull; Crafted with Precision</p>
+    </footer>
+  </div>
+</body>
+
 </html>
